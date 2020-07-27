@@ -20,7 +20,7 @@ const speedControl = (state = 0, action) => {
   return state;
 };
 
-const passengerList = (state = [], action) => {
+const passengerList = (state = ['Luke'], action) => {
   if (action.type === 'ADD_PASSENGER') {
     return [...state, action.payload];
   }
