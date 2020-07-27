@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// THIS COMPONENT IS OUR INTERFACE FOR SPEED
-// YOU SHOULD DISPLAY THE CURRENT SPEED
-// BUTTONS SHOULD INCREASE OR DECREASE SPEED, RESPECTIVELY
+import { Button, Typography } from '@material-ui/core/';
+
+// icons ---
+
+import FastForwardIcon from '@material-ui/icons/FastForward';
+import FastRewindIcon from '@material-ui/icons/FastRewind';
 
 class SpeedControl extends Component {
   clickIncrease = () => {
@@ -20,11 +23,18 @@ class SpeedControl extends Component {
   render() {
     return (
       <div>
-        <h2>Speed Control</h2>
+        <Typography variant="display2">Speed Control</Typography>
+        <Typography variant="display3">
+          {this.props.store.speedControl}
+        </Typography>
 
-        <button onClick={this.clickIncrease}>Increase Speed</button>
-        <p>{this.props.store.speedControl}</p>
-        <button onClick={this.clickDecrease}>Decrease Speed</button>
+        <Button variant="contained" onClick={this.clickDecrease}>
+          <FastRewindIcon />
+          Decrease Speed{' '}
+        </Button>
+        <Button variant="contained" onClick={this.clickIncrease}>
+          Increase Speed <FastForwardIcon />
+        </Button>
       </div>
     );
   }

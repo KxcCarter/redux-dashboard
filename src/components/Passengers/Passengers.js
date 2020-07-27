@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, Typography } from '@material-ui/core';
+import { TextField } from 'material-ui';
+
+import Box from '@material-ui/core/Box';
 // THIS COMPONENT IS OUR INTERFACE FOR PASSENGER CHECK IN
 // YOU SHOULD DISPLAY THE CURRENT PASSENGERS
 // INPUT SHOULD COLLECT INFO, BUTTON SHOULD ADD THEM TO THE LIST
@@ -32,17 +36,20 @@ class Passengers extends Component {
     });
     return (
       <div>
-        <h2>Passengers</h2>
+        <Typography variant="display2">Passengers</Typography>
+        <Box m={3}>
+          <TextField
+            value={this.state.newPerson}
+            type="text"
+            name="name"
+            placeholder="Enter Name"
+            onChange={this.handleChange}
+          />
 
-        <input
-          value={this.state.newPerson}
-          type="text"
-          name="name"
-          placeholder="Enter Name"
-          onChange={this.handleChange}
-        />
-        <button onClick={this.clickAddPassenger}>Add Passenger</button>
-
+          <Button variant="contained" onClick={this.clickAddPassenger}>
+            Add Passenger
+          </Button>
+        </Box>
         <ul>{passengerList}</ul>
       </div>
     );
